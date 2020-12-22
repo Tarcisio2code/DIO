@@ -36,7 +36,26 @@ namespace Vaquinha.Unit.Tests.DomainTests
             valido.Should().BeTrue(because: "os campos foram preenchidos corretamente");
             doacao.ErrorMessages.Should().BeEmpty();
         }
+        //--> Novo teste
+        //-> Para realizar o teste foi alterada a Entidade Doacao, a Fixture DoacaoFixture
+        [Fact]
+        [Trait("Doacao", "Doacao_UsuarioAceitaPagarComTaxa_DoacaoValida")]
+        public void Doacao_UsuarioAceitaPagarComTaxa_DoacaoValida()
+        {
+            //-> Passados os valores para o teste
+            // Arrange
+            var doacao = _doacaoFixture.DoacaoValida(false, 5, false, true);
+            doacao.AdicionarEnderecoCobranca(_enderecoFixture.EnderecoValido());
+            doacao.AdicionarFormaPagamento(_cartaoCreditoFixture.CartaoCreditoValido());
 
+            // Act
+            var valido = doacao.Valido();
+
+            // Assert
+            //-> passado o valor 6, pois o padrão esta definido como 5.
+            doacao.Valor.Should().Be(6, because: "valor com taxa de 20%");
+        }
+        //<--
         [Fact]
         [Trait("Doacao", "Doacao_DadosPessoaisInvalidos_DoacaoInvalida")]
         public void Doacao_DadosPessoaisInvalidos_DoacaoInvalida()

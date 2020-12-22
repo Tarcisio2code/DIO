@@ -31,7 +31,8 @@ namespace Vaquinha.Tests.Common.Fixtures
             return retorno;
         }
 
-        public Doacao DoacaoValida(bool emailInvalido = false, double? valor = 5, bool maxLenghField = false)
+        //-> Adcionado variável acetaTaxa
+        public Doacao DoacaoValida(bool emailInvalido = false, double? valor = 5, bool maxLenghField = false, bool acetaTaxa = false)
         {            
             var faker = new Faker<Doacao>("pt_BR");
 
@@ -39,8 +40,9 @@ namespace Vaquinha.Tests.Common.Fixtures
             const int MAX_VALUE = 500;
             const int DECIMALS = 2;
 
+            //-> Passada a variável acetaTaxa
             faker.CustomInstantiator(f => new Doacao(Guid.Empty, Guid.Empty, Guid.Empty, valor ?? (double)f.Finance.Amount(MIN_VALUE, MAX_VALUE, DECIMALS), 
-                                                        PessoaValida(emailInvalido, maxLenghField), null, null));
+                                                        PessoaValida(emailInvalido, maxLenghField), null, null, acetaTaxa));
 
             return faker.Generate();
         }
