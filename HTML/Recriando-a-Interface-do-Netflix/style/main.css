@@ -16,7 +16,6 @@ body{
    color:white;
 }
 
-
 header .container{
     display:flex;
     flex-direction: row;
@@ -62,6 +61,9 @@ header nav a:hover{
 .filme-principal .descricao{
     margin-top: 10px;
     margin-bottom: 40px;
+    /*altura fixada para não afetar a posição dos botões*/
+    max-height: 20px;
+    
 }
 
 
@@ -106,8 +108,7 @@ header nav a:hover{
     height: 100%;
     width: 100%;
     display: block;
-    cursor: pointer;
-    
+    cursor: pointer;  
 }
 
 
@@ -115,22 +116,8 @@ header nav a:hover{
     margin-top:5px;
 }
 
+/*coloca borda no item selecionado*/
 .box-filme:hover{
     border-style: solid;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

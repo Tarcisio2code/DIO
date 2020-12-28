@@ -14,3 +14,15 @@ $('.owl-carousel').owlCarousel({
         }
     }
 })
+
+/*Altera a descrição conforme o item selecionado*/
+$('.box-filme').on('mouseover', function(event){
+    var $this = event.currentTarget;
+    var activeText = $this.alt.split("|");
+    
+    var title = document.querySelector('.titulo');
+    title.textContent = activeText[0];
+    
+    var description = document.querySelector('.descricao');
+    description.textContent = activeText[1];
+})
