@@ -12,17 +12,21 @@ $('.owl-carousel').owlCarousel({
         1000:{
             items:5
         }
-    }
+    } 
 })
 
-/*Altera a descrição conforme o item selecionado*/
+/*Altera o titulo, a imagem e a descrição conforme o item selecionado*/
 $('.box-filme').on('mouseover', function(event){
     var $this = event.currentTarget;
     var activeText = $this.alt.split("|");
-    
+    var activeImage = $this.src;
+
     var title = document.querySelector('.titulo');
     title.textContent = activeText[0];
     
     var description = document.querySelector('.descricao');
     description.textContent = activeText[1];
+
+    var image = document.querySelector('.image');
+    image.src = activeImage;
 })

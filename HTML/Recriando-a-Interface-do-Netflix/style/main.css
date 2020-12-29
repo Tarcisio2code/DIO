@@ -37,7 +37,6 @@ header nav a{
     margin-right: 10px;
 }
 
-
 header nav a:hover{
     color:#fff;
 }
@@ -45,27 +44,32 @@ header nav a:hover{
 /*filme principal*/
 .filme-principal{
     font-size:16px;
-    background: linear-gradient(rgba(0,0,0,.50),rgba(0,0,0,.50)100%),  url('/img/capa-house.jpg');
+    /*novo gradiente*/
+    background: linear-gradient(to right, rgba(0,0,0,1)50%,rgba(255,255,255,0)100%);
 
     height:400px;
-    background-size:cover;
- 
-
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: left;
     align-items: flex-start;
 }
 
+/*ajustes para utilizar a imagem da capa como background*/
+.image {
+    position:absolute;
+    z-index: -1;
+    align-self: flex-end;
+    margin-top: -330px;
+    clip: rect(330px, 600px, 490px, 0px);
+    zoom: 250%;
+}
 
 .filme-principal .descricao{
     margin-top: 10px;
     margin-bottom: 40px;
     /*altura fixada para não afetar a posição dos botões*/
     max-height: 20px;
-    
 }
-
 
 .filme-principal .titulo{
     margin-top: 15%;
@@ -98,6 +102,7 @@ header nav a:hover{
 
 .container{
     margin-left: 20px;
+
 }
 
 .filme-principal .container{
@@ -111,7 +116,6 @@ header nav a:hover{
     cursor: pointer;  
 }
 
-
 .carrosel-filmes{
     margin-top:5px;
 }
@@ -120,4 +124,3 @@ header nav a:hover{
 .box-filme:hover{
     border-style: solid;
 }
-
