@@ -6,5 +6,7 @@ _Adcionadas as funcionalidade de borda para o item selecionado, e alteração do
 conforme o item selecionado_
 
 _Referencias utilizadas para realizar as alterações_
+
 https://api.jquery.com/
+
 https://owlcarousel2.github.io/OwlCarousel2/docs/started-welcome.html
