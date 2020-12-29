@@ -19,6 +19,7 @@ namespace Api.Data
                 var client = new MongoClient(settings);
                 DB = client.GetDatabase(configuration["NomeBanco"]);
                 MapClasses();
+                
             }
             catch (Exception ex)
             {
