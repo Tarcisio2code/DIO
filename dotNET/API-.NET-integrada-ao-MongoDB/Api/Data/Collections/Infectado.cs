@@ -10,6 +10,7 @@ namespace Api.Data.Collections
             this.DataNascimento = dataNascimento;
             this.Sexo = sexo;
             this.Localizacao = new GeoJson2DGeographicCoordinates(longitude, latitude);
+            
         }
         
         public DateTime DataNascimento { get; set; }
