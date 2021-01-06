@@ -6,11 +6,13 @@ let isGameOver = false;
 let position = 0;
 
 function handleKeyUp(event) {
-  if (event.keyCode === 32 || 38) {
+  if (event.keyCode === 32 || event.keyCode === 38) {
     if (!isJumping) {
       jump();
     }
   }
+  background.style.animationPlayState = "running"
+  createCactus();
 }
 
 function jump() {
@@ -68,5 +70,4 @@ function createCactus() {
   setTimeout(createCactus, randomTime);
 }
 
-createCactus();
 document.addEventListener('keyup', handleKeyUp);
