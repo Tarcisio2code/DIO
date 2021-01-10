@@ -30,3 +30,13 @@ $('.box-filme').on('mouseover', function(event){
     var image = document.querySelector('.image');
     image.src = activeImage;
 })
+
+function playMovie(){
+    var modal = document.querySelector('.modalExibeTrailer');
+    modal.setAttribute('style','display: block');
+}
+
+function closeMovie(){
+    var modal = document.querySelector('.modalExibeTrailer');
+    modal.setAttribute('style','display: none');
+}
