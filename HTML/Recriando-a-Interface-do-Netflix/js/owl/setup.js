@@ -31,12 +31,17 @@ $('.box-filme').on('mouseover', function(event){
     image.src = activeImage;
 })
 
+/*Exibe ou fecha o player do filme*/
 function playMovie(){
     var modal = document.querySelector('.modalExibeTrailer');
-    modal.setAttribute('style','display: block');
-}
-
-function closeMovie(){
-    var modal = document.querySelector('.modalExibeTrailer');
-    modal.setAttribute('style','display: none');
+    var movie = document.querySelector('.movie');
+    var activated = modal.getAttribute('style','display');
+    if (activated == "display: none"){
+        modal.setAttribute('style','display: block');
+    }
+    else{
+        modal.setAttribute('style','display: none');
+        /*utiliza o JSON para enviar o stopvideo*/
+        movie.contentWindow.postMessage(JSON.stringify({ event: 'command', func: 'stopVideo' }), '*');
+    }
 }
