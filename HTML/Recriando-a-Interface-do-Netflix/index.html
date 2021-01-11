@@ -17,11 +17,18 @@
 <body>
     <div class="modalExibeTrailer" style="display: none">
         <div class="modal-content ">
-            <button role="button" class="btnClose" onclick="closeMovie()">
-                <span aria-hidden="true">×</span>
-            </button>           
+            <div class="modal-header">
+                <button role="button" class="btnClose" onclick="playMovie()">
+                    <span aria-hidden="true">×</span>
+                </button>           
+            </div>
+            <div class="modal-body">
+                <!-- enablejsapi permite o controle do video via api do youtube -->
+                <iframe class="movie" src="https://www.youtube.com/embed/5_4SW8HHfUs?start=0&enablejsapi=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+            </div>
         </div>
-    </div>    <header>
+    </div>
+    <header>
         <div class="container">
             <h2 class="logo">NETFLIX</h2>
             <nav>
@@ -86,13 +93,9 @@
                 </div>
         </div>
     </div>
-
     <script src="https://kit.fontawesome.com/2c36e9b7b1.js"></script>
     <script src="js/owl/jquery.min.js"></script>
     <script src="js/owl/owl.carousel.min.js"></script>
     <script src="js/owl/setup.js"></script>
- 
-
- 
 </body>
 </html>
