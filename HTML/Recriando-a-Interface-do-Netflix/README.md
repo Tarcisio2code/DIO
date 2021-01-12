@@ -10,3 +10,8 @@ _Referencias utilizadas para realizar as alterações_
 https://api.jquery.com/
 
 https://owlcarousel2.github.io/OwlCarousel2/docs/started-welcome.html
+
+_Nova referência_
+
+_API do Youtube_
+https://developers.google.com/youtube/iframe_api_reference
