@@ -5,7 +5,7 @@ body {
 .dino {
   position: absolute;
   bottom: 0;
-  background-image: url(img/dino.png);
+  background-image: url('/img/dino.png');
   width: 60px;
   height: 60px;
   margin-left: 10px;
@@ -16,7 +16,7 @@ body {
   width: 60px;
   height: 60px;
   bottom: 0;
-  background-image: url(img/cactus.png);
+  background-image: url('/img/cactus.png');
 }
 
 .game-over {
@@ -38,10 +38,10 @@ body {
 .background {
   position: absolute;
   bottom: 0px;
-  background-image: url('img/background.png');
+  background-image: url('/img/background.png');
   background-repeat: repeat-x;
-  animation: slideright 600s infinite linear;
-  -webkit-animation: slideright 600s infinite linear;
+  animation: slideright 1000s infinite linear;
+  -webkit-animation: slideright 1000s infinite linear;
   width: 100%;
   height: 200px;
 }
@@ -50,7 +50,7 @@ body {
   animation-play-state: paused;
 }
 
-.Texto{
+.texto{
   position: absolute;
   display: flex;
   align-items: center;
