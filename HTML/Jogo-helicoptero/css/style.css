@@ -76,6 +76,13 @@ body{
 	background-image: url(../imgs/inimigo2.png);
 }
 
+#disparo {
+	width: 50px;
+	height: 8px;
+	position: absolute;
+	background-image: url(../imgs/disparo.png);
+}
+
 /* Animações */
 .anima1 {
 	background-image:url(../imgs/helicoptero.png);
