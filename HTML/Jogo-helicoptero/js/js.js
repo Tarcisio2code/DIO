@@ -7,6 +7,7 @@ function start() { // Inicio da função start()
 	$("#fundoGame").append("<div id='inimigo2'></div>");
 	$("#fundoGame").append("<div id='amigo' class='anima3'></div>");
 	$("#fundoGame").append("<div id='placar'></div>");
+	$("#fundoGame").append("<div id='energia'></div>");
 
 	//Principais variáveis do jogo
 	var jogo = {}
@@ -21,12 +22,24 @@ function start() { // Inicio da função start()
 	var pontos=0;
 	var salvos=0;
 	var perdidos=0;
+	var energiaAtual=3
 
 	//retorna um valor entre 0 e 334
 	var posicaoY = parseInt(Math.random() * 334);
 
 	jogo.pressionou = [];
-	
+
+	var somDisparo=document.getElementById("somDisparo");
+	var somExplosao=document.getElementById("somExplosao");
+	var somGameover=document.getElementById("somGameover");
+	var somPerdido=document.getElementById("somPerdido");
+	var somResgate=document.getElementById("somResgate");
+
+	//Música em loop
+	var musica=document.getElementById("musica");
+	musica.addEventListener("ended", function(){ musica.currentTime = 0; musica.play(); }, false);
+	musica.play();
+
 	//Verifica se o usuário pressionou alguma tecla	
 	$(document).keydown(function(e){
 		jogo.pressionou[e.which] = true;
@@ -61,6 +74,9 @@ function start() { // Inicio da função start()
 
 		//atualiza a div placar
 		placar();
+
+		//atualiza a div energia
+		energia();
 	}
 
 	function movefundo(){
@@ -147,6 +163,8 @@ function start() { // Inicio da função start()
 	
 		if (podeAtirar==true) {
 			
+			somDisparo.play()
+
 			podeAtirar=false;
 		
 			//armazena a posição topo da div jogador1
@@ -196,6 +214,8 @@ function start() { // Inicio da função start()
 
 			
 		if (colisao1.length>0) {
+			
+			energiaAtual--
 			//armazena a posição left e top da div inimigo1
 			inimigo1X = parseInt($("#inimigo1").css("left"));
 			inimigo1Y = parseInt($("#inimigo1").css("top"));
@@ -210,7 +230,8 @@ function start() { // Inicio da função start()
 		}
 		// jogador com o inimigo2 
 		if (colisao2.length>0) {
-	
+			
+			energiaAtual--
 			inimigo2X = parseInt($("#inimigo2").css("left"));
 			inimigo2Y = parseInt($("#inimigo2").css("top"));
 			explosao1(inimigo2X,inimigo2Y);
@@ -224,6 +245,9 @@ function start() { // Inicio da função start()
 		// Disparo com o inimigo1
 		if (colisao3.length>0) {
 			
+			//almenta a velocidade de movimento da div inimigo1
+			velocidade=velocidade+0.3
+
 			pontos=pontos+100
 			inimigo1X = parseInt($("#inimigo1").css("left"));
 			inimigo1Y = parseInt($("#inimigo1").css("top"));
@@ -257,6 +281,7 @@ function start() { // Inicio da função start()
 		// jogador com o amigo
 		if (colisao5.length>0) {
 			salvos++
+			somResgate.play()
 			reposicionaAmigo();
 			$("#amigo").remove();
 		}
@@ -274,6 +299,8 @@ function start() { // Inicio da função start()
 	}
 	//Explosão 1
 	function explosao1(inimigo1X,inimigo1Y) {
+		//aciona audio somExplosao
+		somExplosao.play()
 		//cria a div explosao1
 		$("#fundoGame").append("<div id='explosao1'></div");
 		//define a imagem de fundo da div. Atribuido aqui para funcionar em todos os browsers
@@ -298,6 +325,8 @@ function start() { // Inicio da função start()
 
 	//Explosão3
 	function explosao3(amigoX,amigoY) {
+		//aciona audio somPerdido
+		somPerdido.play()
 		$("#fundoGame").append("<div id='explosao3' class='anima4'></div");
 		$("#explosao3").css("top",amigoY);
 		$("#explosao3").css("left",amigoX);
@@ -338,4 +367,32 @@ function start() { // Inicio da função start()
 		$("#placar").html("<h2> Pontos: " + pontos + " Salvos: " + salvos + " Perdidos: " + perdidos + "</h2>");
 		
 	} //fim da função placar()
+
+	//Barra de energia
+	function energia() {
+	
+		if (energiaAtual==3) {
+			
+			$("#energia").css("background-image", "url(imgs/energia3.png)");
+		}
+
+		if (energiaAtual==2) {
+			
+			$("#energia").css("background-image", "url(imgs/energia2.png)");
+		}
+
+		if (energiaAtual==1) {
+			
+			$("#energia").css("background-image", "url(imgs/energia1.png)");
+		}
+
+		if (energiaAtual==0) {
+			
+			$("#energia").css("background-image", "url(imgs/energia0.png)");
+			
+			//Game Over
+		}
+
+	} // Fim da função energia()
+
 }
